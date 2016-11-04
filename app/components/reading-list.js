@@ -10,7 +10,7 @@ export default Ember.Component.extend({
       if (title) {
         this.get('addBook')({ title });
       }
-      this.set('value', new String());  // reset value
+      this.set('value', "");  // reset value
     }
 
   }

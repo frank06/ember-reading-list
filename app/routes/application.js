@@ -1,26 +1,22 @@
 import Ember from 'ember';
-const { A } = Ember;
+import db from '../utils/db';
 
 export default Ember.Route.extend({
 
   model() {
-     return A([
-       { title: "El Aleph" },
-       { title: "2666" },
-       { title: "The Black Swan" }
-     ]);
+    return db.books();
    },
 
    actions: {
 
      addBook(book) {
-       this.currentModel.pushObject(book);
-       // save
+       db.addBook(book);
+       this.refresh();
      },
 
      removeBook(book) {
-       this.currentModel.removeObject(book);
-       // save
+       db.removeBook(book);
+       this.refresh();
      }
 
    }
