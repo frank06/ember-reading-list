@@ -1,24 +1,20 @@
-import Ember from 'ember';
+import EmberObject from '@ember/object';
+import { copy } from '@ember/object/internals';
 
-export default Ember.Object.create({
-
-  _records: [
+export default EmberObject.create({
+  data: [
     { title: "El Aleph" },
     { title: "2666" },
     { title: "The Black Swan" }
   ],
-
   books() {
-    return Ember.copy(this._records);
+    return copy(this.data);
   },
-
   addBook(book) {
-    this._records.push(book);
+    this.data.push(book);
   },
-
   removeBook(book) {
-    const index = this._records.indexOf(book);
-    this._records.splice(index, 1);
+    const index = this.data.indexOf(book);
+    this.data.splice(index, 1);
   }
-
 });

@@ -1,24 +1,26 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('reading-list', 'Integration | Component | reading list', {
-  integration: true
-});
+module('Integration | Component | reading-list', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  test('it renders', async function(assert) {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.set('myAction', function(val) { ... });
 
-  this.render(hbs`{{reading-list}}`);
+    await render(hbs`{{reading-list}}`);
 
-  assert.equal(this.$().text().trim(), '');
+    assert.equal(this.element.textContent.trim(), '');
 
-  // Template block usage:
-  this.render(hbs`
-    {{#reading-list}}
-      template block text
-    {{/reading-list}}
-  `);
+    // Template block usage:
+    await render(hbs`
+      {{#reading-list}}
+        template block text
+      {{/reading-list}}
+    `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+    assert.equal(this.element.textContent.trim(), 'template block text');
+  });
 });
